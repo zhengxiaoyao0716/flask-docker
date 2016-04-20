@@ -16,7 +16,8 @@ RUN mkdir /web
 WORKDIR /web
 
 # copy source folder
-ONBUILD COPY src /web/
+RUN mkdir ./src
+ONBUILD COPY src /web/src/
 
 # mount share folder
 RUN mkdir ./share
