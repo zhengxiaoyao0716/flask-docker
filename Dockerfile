@@ -8,10 +8,6 @@ RUN set -ex\
     && echo_supervisord_conf > /etc/supervisord.conf \
     && echo [include] >> /etc/supervisord.conf
 
-# I'm trying to add supervisord service as startup, but it doesn't work. What should I do, anyone known?
-ADD https://raw.githubusercontent.com/Supervisor/initscripts/master/gentoo-matagus /etc/init.d/supervisord
-RUN echo :4:respawn:/etc/init.d/supervisord >> /etc/inittab
-
 RUN mkdir /web
 WORKDIR /web
 
@@ -31,4 +27,4 @@ ONBUILD RUN echo -e "[include]\nfiles = /web/programs.conf" >> /etc/supervisord.
 ONBUILD COPY requirements.txt /web/
 ONBUILD RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
