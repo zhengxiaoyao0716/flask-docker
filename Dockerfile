@@ -5,8 +5,7 @@ MAINTAINER zhengxiaoyao0716
 RUN set -ex\
     && apk add --no-cache uwsgi uwsgi-python \
     && pip install --no-cache-dir flask supervisor \
-    && echo_supervisord_conf > /etc/supervisord.conf \
-    && echo [include] >> /etc/supervisord.conf
+    && echo_supervisord_conf > /etc/supervisord.conf
 
 RUN mkdir /web
 WORKDIR /web
