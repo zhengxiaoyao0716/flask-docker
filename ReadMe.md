@@ -1,4 +1,4 @@
-# flask
+# flask - docker
 ### Docker image of python webapp.
 Pre-installed uwsgi & supervisor, base on python:2.7-alpine
 ***
@@ -10,14 +10,15 @@ path/to/app
         -- templates
         -- application.py
         ...
-        # Folder is permitted hear for more then one app.
+        # Folder|module is permitted hear for more then one app.
         -- app1
             ...
         -- app2
             ...
         ...
     - share  # Used to share with host|other-contains.
-        -- uwsgi.sock
+        -- tmp/uwsgi.sock  # Convenience to connect.
+        -- app3  # Convenience to develop and debug.
         ...
     - programs.conf  # Config-file for supervisor.
     - requirements.txt  # Install your dependencies.
