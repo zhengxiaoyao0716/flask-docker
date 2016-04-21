@@ -56,5 +56,5 @@ docker run --name <appName> \
 Now your container will running in background.
 ##### Maybe you need to enter it:
 ```
-docker exec <appName> /bin/sh
+docker exec -it <appName> /bin/sh
 ```
