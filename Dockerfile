@@ -26,4 +26,4 @@ ONBUILD RUN echo -e "[include]\nfiles = /web/programs.conf" >> /etc/supervisord.
 ONBUILD COPY requirements.txt /web/
 ONBUILD RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT supervisord -c /etc/supervisord.conf && /bin/sh
+CMD ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
