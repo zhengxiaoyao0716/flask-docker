@@ -48,3 +48,13 @@ docker run --name <appName> \
     -v <volumeDir>:/web/share \
     -d <yourImageName>
 ```
+- --name=                     Assign a name to the container
+- -p, --publish=[]            Publish a container's port(s) to the host
+- -v, --volume=[]             Bind mount a volume
+- -d, --detach=false          Run container in background and print container ID
+
+Now your container will running in background.
+##### Maybe you need to enter it:
+```
+docker exec <appName> /bin/sh
+```
