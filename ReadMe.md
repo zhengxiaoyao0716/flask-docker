@@ -9,6 +9,7 @@ path/to/app
         -- static
         -- templates
         -- application.py
+        -- src/.uwsgi.ini
         ...
         # Folder|module is permitted hear for more then one app.
         -- app1
@@ -18,13 +19,22 @@ path/to/app
         ...
     - share  # Used to share with host|other-contains.
         -- static/...  # Convenience to service static files by nginx.
-        -- tmp/uwsgi.sock  # Convenience to connect.
+        -- tmp/.uwsgi.sock  # Convenience to connect.
         -- app3  # Convenience to develop and debug.
         ...
     - programs.conf  # Config-file for supervisor.
     - requirements.txt  # Install your dependencies.
 ```
 - You can get help from http://supervisord.org/running.html#adding-a-program to see how to write "programs.conf".
+- Notice, if your python webapp is deployed based on uwsgi,<br />
+you must add 'plugins = /usr/lib/uwsgi/python' to it's config file:<br />
+ - src/.uwsgi.ini
+> [uwsgi]<br />
+> ...<br />
+> plugins = /usr/lib/uwsgi/python<br />
+> socket = /web/share/%n.sock<br />
+> chmod-socket = 666<br />
+> ...
 
 ***
 ## -- Build image --
