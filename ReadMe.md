@@ -24,6 +24,7 @@ path/to/app
         ...
     - programs.conf  # Config-file for supervisor.
     - requirements.txt  # Install your dependencies.
+    - localtime  # Adjust your system timezone.
 ```
 - You can get help from http://supervisord.org/running.html#adding-a-program to see how to write "programs.conf".
 - Notice, if your python webapp is deployed based on uwsgi,<br />
