@@ -1,6 +1,6 @@
 # flask - docker
 ### Docker image of python webapp.
-Pre-installed uwsgi & supervisor, base on python:2.7-alpine
+Pre-installed uwsgi & supervisor(optional), base on python:2.7-alpine
 ***
 ## -- File structure --
 ```
@@ -26,6 +26,7 @@ path/to/app
     - requirements.txt  # Install your dependencies.
     - localtime  # Adjust your system timezone.
 ```
+- If you needn't supervisor, write your startup command in your daockerfile.
 - You can get help from http://supervisord.org/running.html#adding-a-program to see how to write "programs.conf".
 - Notice, if your python webapp is deployed based on uwsgi,<br />
 you must add 'plugins = /usr/lib/uwsgi/python' to it's config file:<br />
@@ -42,10 +43,15 @@ you must add 'plugins = /usr/lib/uwsgi/python' to it's config file:<br />
 ##### First, add your "Dockerfile":
 ```
 FROM zhengxiaoyao0716/flask
+FROM zhengxiaoyao0716/flask:supervisor  # without supervisor
 
 MAINTAINER ${your name}
 
 EXPOSE  port1 port2 ...
+
+# (optional)(if used without supervisor tag.)
+ENTRYPOINT Your app startup command.
+CMD Your app startup command.(cannot be replaced with 'docker run command')
 ``` 
 ##### Now, you can build your webapp image:
 ```

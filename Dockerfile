@@ -10,12 +10,12 @@ RUN set -ex \
     && apk add --no-cache uwsgi uwsgi-python \
     && pip install --no-cache-dir virtualenv
 
-# config supervisor
-RUN set -ex \
-    && pip install --no-cache-dir supervisor \
-    && echo_supervisord_conf > /etc/supervisord.conf
-ONBUILD COPY programs.conf /web/
-ONBUILD RUN echo -e "[include]\nfiles = /web/programs.conf" >> /etc/supervisord.conf
+# # config supervisor
+# RUN set -ex \
+#     && pip install --no-cache-dir supervisor \
+#     && echo_supervisord_conf > /etc/supervisord.conf
+# ONBUILD COPY programs.conf /web/
+# ONBUILD RUN echo -e "[include]\nfiles = /web/programs.conf" >> /etc/supervisord.conf
 
 # copy source folder
 RUN mkdir ./src
@@ -40,5 +40,4 @@ ONBUILD RUN set -ex \
     && rm /etc/localtime \
     && ln -s /web/localtime /etc/localtime
 
-
-CMD ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
+# CMD ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
