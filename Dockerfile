@@ -20,13 +20,10 @@ VOLUME /web/share
 # install dependencies
 RUN python -m venv .env
 # RUN rm /usr/local/bin/pip /usr/local/bin/python
-RUN rm /usr/local/bin/python
 # RUN ln -s /web/.env/bin/pip /usr/local/bin/pip
-RUN ln -s /web/.env/bin/python /usr/local/bin/python
-# RUN pip install --no-cache-dir flask
+# RUN ln -s /web/.env/bin/python /usr/local/bin/python
 RUN /web/.env/bin/pip install --no-cache-dir flask
 ONBUILD COPY requirements.txt /web/
-# ONBUILD RUN pip install --no-cache-dir -r requirements.txt
 ONBUILD RUN /web/.env/bin/pip install --no-cache-dir -r requirements.txt
 
 # config timezone
