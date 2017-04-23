@@ -7,7 +7,12 @@ WORKDIR /web
 
 # base environment
 RUN set -ex \
-    && apk add --no-cache uwsgi uwsgi-python
+    && apk add --no-cache --virtual .build-deps \
+        gcc \
+        libc-dev \
+        linux-headers \
+    && pip install --no-cache-dir uwsgi \
+    && apk del .build-deps
 
 # copy source folder
 RUN mkdir ./src
