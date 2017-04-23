@@ -24,10 +24,10 @@ RUN rm /usr/local/bin/python
 # RUN ln -s /web/.env/bin/pip /usr/local/bin/pip
 RUN ln -s /web/.env/bin/python /usr/local/bin/python
 # RUN pip install --no-cache-dir flask
-RUN python -m pip install --no-cache-dir flask
+RUN /web/.env/bin/pip install --no-cache-dir flask
 ONBUILD COPY requirements.txt /web/
 # ONBUILD RUN pip install --no-cache-dir -r requirements.txt
-ONBUILD RUN python -m pip install --no-cache-dir -r requirements.txt
+ONBUILD RUN /web/.env/bin/pip install --no-cache-dir -r requirements.txt
 
 # config timezone
 ONBUILD COPY localtime /web/
