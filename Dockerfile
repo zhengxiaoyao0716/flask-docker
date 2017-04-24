@@ -8,9 +8,12 @@ WORKDIR /web
 # base environment
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps \
+        # for uwsgi complie
         gcc \
         libc-dev \
         linux-headers \
+        # for uwsgi-websocket support
+        openssl-dev \
     && pip install --no-cache-dir uwsgi \
     && apk del .build-deps
 
