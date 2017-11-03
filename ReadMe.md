@@ -1,6 +1,6 @@
 # flask - docker
 ### Docker image of python webapp.
-Pre-installed uwsgi & supervisor(optional), base on python:2.7-alpine
+Pre-installed uwsgi & supervisor(optional), base on python:VERSION-alpine
 ***
 ## -- File structure --
 ```
